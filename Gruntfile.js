@@ -9,7 +9,6 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     meta: {
       banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>' +
         '<%= pkg.homepage ? "* " + pkg.homepage : "" %>' +
         '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
@@ -53,15 +52,22 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'build'
   ]);
+
   grunt.registerTask('dev', [
     'build',
     'watch'
   ]);
+
   grunt.registerTask('build', [
     'jshint',
     'qunit',
     'concat',
     'uglify'
+  ]);
+
+  grunt.registerTask('test', [
+    'jshint',
+    'qunit'
   ]);
 
 };
